@@ -141,7 +141,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         new AcercaDe();
+=======
+        AcercaDe acercaDeFrame = new AcercaDe();        
+        acercaDeFrame.setVisible(true);
+>>>>>>> origin/master
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

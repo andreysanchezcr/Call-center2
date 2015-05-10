@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package call.center;
+package Interfaz;
 
 /**
  *
@@ -174,16 +174,7 @@ public class ServidorVentana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String pUserName=jTextField1.getText();
-        String pPassword=jPasswordField1.getText();
-        String pPassword2=jPasswordField1.getSelectedText();
-        if(pUserName.equals("") || pPassword.equals("")){
-            JOptionPane.showMessageDialog(this, "¡Complete todos los espacios solicitados\npara poder continuar!");
-        }
-        else{
-            System.out.println("ACA llama a la funcion para poderhacer el login");
-        }
+        // TODO add your handling code here:       
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

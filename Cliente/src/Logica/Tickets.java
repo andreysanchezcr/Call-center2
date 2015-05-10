@@ -1,4 +1,5 @@
-package call.center;
+package Logica;
+
 
 public class Tickets {
     private String asunto;

@@ -172,7 +172,13 @@ public class Login extends javax.swing.JFrame {
         else{
             System.out.println("ACA llama a la funcion para poderhacer el login");
         }
-        this.verificarAdministrador(pUserName, pPassword);
+        Persona administrador =verificarAdministrador(pUserName, pPassword);
+        if(administrador!=null){
+            ServidorVentana ventanaServidor= new ServidorVentana();
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Los datos son incorrectos");
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

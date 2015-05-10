@@ -1,4 +1,4 @@
-package call.center;
+
 
 public class Persona {
     private String nombre;
@@ -70,6 +70,15 @@ public class Persona {
 
     public void setTipo(boolean tipo) {
         this.tipo = tipo;
+    }
+    private void registrarPersonas(){
+        Persona admn = new Persona("Admin","admin@tec.ac.cr","12345",null,true);
+        Persona rojo = new Persona("Fernando","fernando@tec.ac.cr","12345",null,true);
+        Persona verde = new Persona("Luis","luis@tec.ac.cr","12345",null,true);
+        Persona amarillo = new Persona("Junior","junior@tec.ac.cr","12345",null,true);
+        
+        
+        
     }
     
     public String toString(){

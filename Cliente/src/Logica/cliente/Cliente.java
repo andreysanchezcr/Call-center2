@@ -30,7 +30,7 @@ public class Cliente
         {
         	
             creaYVisualizaVentana();
-            socket = new Socket("localhost", 4546);
+            socket = new Socket("localhost", 4646);
             ObjectInputStream objeto_entrante= new ObjectInputStream(socket.getInputStream());
             ArrayList lista = (ArrayList) objeto_entrante.readObject();
             ControlCliente control = new ControlCliente(socket, panel,lista);

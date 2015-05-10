@@ -46,7 +46,7 @@ public class Servidor
     	lista.add("CINCO");
         try
         {
-            socketServidor = new ServerSocket(4546);
+            socketServidor = new ServerSocket(4646);
             while (true){
             	
                 Socket cliente = socketServidor.accept();

@@ -1,12 +1,22 @@
-package call.center;
+package Logica;
 
 public class Tickets {
+    private String FechaHoraRep;
+    private int IDEmpleado;
+    private String FechaHoraAten;
+    private int tiempoSeg;
+    private String comentario;
     private String asunto;
     private int IDTicket;
     private String categoria;
     private String estado;
     
-    public Tickets(String asunto, int IDTicket, String categoria, String estado){
+    public Tickets(String FechaHoraRep, int IDEmpleado, String FechaHoraAten, int tiempoSeg, String comentario, String asunto, int IDTicket, String categoria, String estado){
+        this.FechaHoraRep = FechaHoraRep; 
+        this.IDEmpleado = IDEmpleado;
+        this.FechaHoraAten = FechaHoraAten;
+        this.tiempoSeg = tiempoSeg;
+        this.comentario = comentario;
         this.asunto = asunto;
         this.IDTicket = IDTicket;
         this.categoria = categoria;

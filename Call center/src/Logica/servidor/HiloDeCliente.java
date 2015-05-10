@@ -1,4 +1,6 @@
-package servidor;
+package Logica.servidor;
+
+
 
 
 import java.io.DataInputStream;
@@ -22,7 +24,7 @@ public class HiloDeCliente implements Runnable, ListDataListener
     /** Lista en la que se guarda toda la charla */
     private DefaultListModel charla;
 
-    /** Socket al que está conectado el cliente */
+    /** Socket al que estï¿½ conectado el cliente */
     private Socket socket;
 
     /** Para lectura de datos en el socket */
@@ -33,8 +35,8 @@ public class HiloDeCliente implements Runnable, ListDataListener
     ArrayList lista = new ArrayList();
     ObjectOutputStream dataObject; 
 
-    private ServidorChat servidor;
-    public HiloDeCliente(DefaultListModel charla, Socket socket, ArrayList lista,ServidorChat servidor) throws IOException
+    private Servidor servidor;
+    public HiloDeCliente(DefaultListModel charla, Socket socket, ArrayList lista,Servidor servidor) throws IOException
     {
     	
     	this.servidor=servidor;

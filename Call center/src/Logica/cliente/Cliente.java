@@ -1,6 +1,9 @@
-package cliente;
+package Logica.cliente;
 
 
+
+import cliente.ControlCliente;
+import cliente.PanelCliente;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 
-public class ClienteChat
+public class Cliente
 {
     private Socket socket;
 
@@ -18,11 +21,11 @@ public class ClienteChat
 
     public static void main(String[] args)
     {
-        new ClienteChat();
+        new Cliente();
     }
 
   
-    public ClienteChat()
+    public Cliente()
     {
         try
         {

@@ -1,4 +1,4 @@
-package servidor;
+package Logica.servidor;
 
 
 import java.net.ServerSocket;
@@ -14,7 +14,7 @@ import javax.swing.DefaultListModel;
  * @author Chuidiang
  *
  */
-public class ServidorChat
+public class Servidor
 {
 	ArrayList lista = new ArrayList();
     /** Lista en la que se guaradara toda la conversacion */
@@ -26,14 +26,14 @@ public class ServidorChat
      */
     public static void main(String[] args)
     {
-        new ServidorChat();
+        new Servidor();
     }
 
     /**
      * Se mete en un bucle infinito para ateder clientes, lanzando un hilo
      * para cada uno de ellos.
      */
-    public ServidorChat()
+    public Servidor()
     {
     	lista.add("CERO");
     	lista.add("uno");

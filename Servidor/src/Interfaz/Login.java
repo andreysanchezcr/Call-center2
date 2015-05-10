@@ -6,6 +6,8 @@
 package Interfaz;
 
 
+import Logica.Persona;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +19,44 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    private ArrayList listaEmpleados=new ArrayList();
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        registrarPersonas();
+    }
+    public Persona verificarAdministrador(String usuario, String contraseña){
+        Persona admn =(Persona)listaEmpleados.get(0);
+        if(usuario.equals(admn.correo)&&contraseña.equals(admn.contraseña)){
+            System.out.println("La persona si estaba registrada");
+            return admn;
+        }
+        return null;
+    }
+    public Persona verificarEmpleados(String usuario, String contraseña){
+        for(int i =1;i<listaEmpleados.size();i++){
+            Persona temp= (Persona)listaEmpleados.get(i);
+            if(temp.contraseña.equals(contraseña)&&temp.correo.equals(usuario)){
+                System.out.println("La persona si estaba registrada");
+                return temp;
+            }
+            
+        }
+        return null;
+        
+    }
+    
+    private void registrarPersonas(){
+        Persona admn = new Persona("Admin","admin@tec.ac.cr","12345",null,true);
+        Persona rojo = new Persona("Fernando","fernando@tec.ac.cr","12345",null,true);
+        Persona verde = new Persona("Luis","luis@tec.ac.cr","12345",null,true);
+        Persona amarillo = new Persona("Junior","junior@tec.ac.cr","12345",null,true);
+        listaEmpleados.add(admn);
+        listaEmpleados.add((Persona)verde);
+        listaEmpleados.add((Persona)rojo);
+        listaEmpleados.add((Persona)amarillo);
+        
+        
     }
 
     /**
@@ -135,6 +172,7 @@ public class Login extends javax.swing.JFrame {
         else{
             System.out.println("ACA llama a la funcion para poderhacer el login");
         }
+        this.verificarAdministrador(pUserName, pPassword);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -1,4 +1,8 @@
 package Logica;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 public class Tickets {
     private String FechaHoraRep;

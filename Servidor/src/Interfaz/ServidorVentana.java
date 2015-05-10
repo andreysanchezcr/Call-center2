@@ -19,6 +19,7 @@ public class ServidorVentana extends javax.swing.JFrame {
      */
     public ServidorVentana() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**

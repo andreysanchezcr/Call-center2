@@ -3,6 +3,7 @@ package Logica.servidor;
 
 
 
+import Logica.Persona;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class HiloDeCliente implements Runnable, ListDataListener
 
     /** Socket al que est� conectado el cliente */
     private Socket socket;
+    private boolean registrarse=true;
+    
 
     /** Para lectura de datos en el socket */
     private DataInputStream dataInput;
@@ -34,10 +37,12 @@ public class HiloDeCliente implements Runnable, ListDataListener
     private DataOutputStream dataOutput;
     ArrayList lista = new ArrayList();
     ObjectOutputStream dataObject; 
+    ArrayList listaEmpleados = new ArrayList();
 
     private Servidor servidor;
     public HiloDeCliente(DefaultListModel charla, Socket socket, ArrayList lista,Servidor servidor) throws IOException
     {
+        
     	
     	this.servidor=servidor;
         this.charla = charla;
@@ -61,6 +66,18 @@ public class HiloDeCliente implements Runnable, ListDataListener
         }
         
     }
+    private void registrarPersonas(){
+        Persona admn = new Persona("Admin","admin@tec.ac.cr","12345",null,true);
+        Persona rojo = new Persona("Fernando","fernando@tec.ac.cr","12345",null,true);
+        Persona verde = new Persona("Luis","luis@tec.ac.cr","12345",null,true);
+        Persona amarillo = new Persona("Junior","junior@tec.ac.cr","12345",null,true);
+        listaEmpleados.add(admn);
+        listaEmpleados.add((Persona)verde);
+        listaEmpleados.add((Persona)rojo);
+        listaEmpleados.add((Persona)amarillo);
+        
+        
+    }
 
 
     public void run()
@@ -69,15 +86,12 @@ public class HiloDeCliente implements Runnable, ListDataListener
         {
             while (true)
             {
-                int indice = dataInput.readInt();
                 
-                {
-                    charla.addElement(Integer.toString(indice));
-                    System.out.println("Se ha presionado: "+indice);
-                    lista.remove(indice);
-                	lista.add(indice, "Ceroooooo");
+                
+                
+                
                     
-                }
+                
             }
         } catch (Exception e)
         {
@@ -102,14 +116,14 @@ public class HiloDeCliente implements Runnable, ListDataListener
 
 	@Override
 	public void contentsChanged(ListDataEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 
 	@Override
 	public void intervalRemoved(ListDataEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

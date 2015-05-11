@@ -16,6 +16,7 @@ public class ControlCliente implements ActionListener, Runnable
 
     /** Para escritura de datos en el socket */
     private DataOutputStream dataOutput;
+    private boolean registrarse=true;
 
     /** Panel con los controles para el usuario */
     private PanelCliente panel;
@@ -64,20 +65,7 @@ public class ControlCliente implements ActionListener, Runnable
             while (true)
             {
                // String texto = dataInput.readUTF();
-            	try{
-            		
             	
-            	int numero =dataInput.readInt();
-            	lista.remove(numero);
-            	lista.add(numero, "Ceroooooo");
-            	for(int i =0;i<lista.size();i++){
-            		panel.addTexto((String)lista.get(i));
-            	}
-                
-                panel.addTexto("\n");
-            	}catch(Exception e){
-            		System.out.println("Instruccion no valida");
-            	}
             }
         } catch (Exception e)
         {

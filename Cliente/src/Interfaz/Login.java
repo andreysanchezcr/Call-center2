@@ -6,6 +6,7 @@
 package Interfaz;
 
 
+import Logica.cliente.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -135,6 +136,8 @@ public class Login extends javax.swing.JFrame {
         else{
             System.out.println("ACA llama a la funcion para poderhacer el login");
         }
+        Cliente cliente = new Cliente(pUserName,pPassword);
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

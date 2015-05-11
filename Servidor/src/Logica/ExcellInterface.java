@@ -14,7 +14,10 @@ import java.util.ArrayList;
          * @param path Proveniente del JChoser
          */
         public void setPathDeArchivo(String path);
-        
+        /**
+         * Metodos para la cargar y guardar de Tickets para el Servidor
+         * @return Array de Tickets correspondientes 
+         */
         public ArrayList<Tickets>  cargarTiketsDeArchivo();
         public ArrayList<Tickets>  cargarTiketsPendientesDeArchivo();
         public ArrayList<Tickets>  cargarTiketsRojosDeArchivo();

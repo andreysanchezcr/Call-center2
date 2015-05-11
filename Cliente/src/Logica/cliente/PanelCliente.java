@@ -31,7 +31,14 @@ public class PanelCliente
     /** Bot�n para enviar el texto */
     private JButton boton;
 
-
+    /**
+     * Crea el panel con todos sus componentes. Un Area de texto para ver la
+     * conversaci�n, un textField para escribir el texto que queremos enviar y
+     * un bot�n de enviar.
+     * 
+     * @param contenedor
+     *            Contenedor en el que a�adir todos los componentes
+     */
     public PanelCliente(Container contenedor)
     {
         contenedor.setLayout(new BorderLayout());
@@ -48,7 +55,10 @@ public class PanelCliente
         contenedor.add(panel, BorderLayout.SOUTH);
     }
 
-
+    /** A�ade el actionListener que se le pasa tanto a pulsar <intro> en el
+     * textField como al bot�n.
+     * @param accion ActionListener a a�adir.
+     */
     public void addActionListener(ActionListener accion)
     {
         textField.addActionListener(accion);
@@ -56,13 +66,19 @@ public class PanelCliente
 
     }
 
-
+    /**
+     * A�ade el texto que se le pasa al textArea.
+     * @param texto Texto a a�adir
+     */
     public void addTexto(String texto)
     {
         textArea.append(texto);
     }
 
- 
+    /**
+     * Devuelve el texto que hay en el textfield y lo borra.
+     * @return El texto del textfield.
+     */
     public String getTexto()
     {
         String texto = textField.getText();

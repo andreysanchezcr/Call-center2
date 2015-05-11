@@ -7,13 +7,14 @@ package Interfaz;
 
 
 import Logica.cliente.Cliente;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Fernando
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements  Runnable{
 
     /**
      * Creates new form Login
@@ -136,7 +137,10 @@ public class Login extends javax.swing.JFrame {
         else{
             System.out.println("ACA llama a la funcion para poderhacer el login");
         }
-        Cliente cliente = new Cliente(pUserName,pPassword);
+        
+        
+        Cliente cliente = new Cliente(pUserName,pPassword,this);
+        System.out.println("entro");
         
         
         
@@ -196,4 +200,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

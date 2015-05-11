@@ -1,10 +1,11 @@
 package Logica.cliente;
 
 
-
-
+import Interfaz.Login;
+import Interfaz.ClienteVentana;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -12,45 +13,57 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+/**
+ * Clase con el main de un cliente del chat.
+ * Establece la conexion y crea la ventana y la clase de control.
+ * @author Chuidiang
+ *
+ */
 
 public class Cliente
 {
+    /** Socket con el servidor del chat */
     private Socket socket;
 
+    /** Panel con la ventana del cliente */
     private PanelCliente panel;
+    ArrayList listaEmpleados= new ArrayList();
+    ObjectInputStream objeto_entrante;
 
-
-   // public static void main(String[] args)
-   // {
-   //     new Cliente("fernando@tec.ac.cr","12345");
-   // }
-
+    /**
+     * Arranca el Cliente de chat.
+     * @param args
+     */
   
-    public Cliente(String correo, String contrasena)
+    /**
+     * Crea la ventana, establece la conexi�n e instancia al controlador.
+     */
+    public Cliente(String correo, String contrasena,Login parent)
     {
         try
         {
-        	
-            creaYVisualizaVentana();
-            socket = new Socket("localhost", 4847);
+            //creaYVisualizaVentana();
+            socket = new Socket("localhost", 5557);
             DataOutputStream flujoSaliente = new DataOutputStream(socket.getOutputStream());
             DataInputStream flujoEntrante = new DataInputStream(socket.getInputStream());
+            objeto_entrante= new ObjectInputStream(socket.getInputStream());
             flujoSaliente.writeUTF(correo+" "+contrasena);
             
             int indicador=flujoEntrante.readInt();
             System.out.println(indicador);
             if(indicador==0){
+                parent.dispose();
+                ClienteVentana ventana = new ClienteVentana();
+                //listaEmpleados= getLista();
                 System.out.println("EXito");
+                ControlCliente control = new ControlCliente(socket, panel);
+                
             }else{
                 System.out.println("Fallo");
             }
+                        
             
-            //socket.wait(10);
             
-            ObjectInputStream objeto_entrante= new ObjectInputStream(socket.getInputStream());
-            ArrayList lista = (ArrayList) objeto_entrante.readObject();
-            ControlCliente control = new ControlCliente(socket, panel,lista);
-            socket.close();
         } catch (Exception e)
         {
             e.printStackTrace();

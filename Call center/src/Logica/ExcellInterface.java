@@ -1,15 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package principal;
+
+package Logica;
 
 /**
  *
  * @author root
+ * Interface para el correcto manejo de la clase Exell
  */
-public abstract interface  MyExell_Interface {
-    public void cargarTikets();
-    public 
+    public abstract interface  ExcellInterface{
+    
+        public void cargarTikets();
+        public void cargarTiketsPendientes();
+        public void cargarTiketsRojos();
+        public void cargarTiketsVerdes();
+        public void cargarTiketsAmarillos();
+        public void cargarGuardarCambios();
+    
 }

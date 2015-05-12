@@ -37,14 +37,17 @@ public class Exell implements ExcellInterface{
 
     Exell(){}
     
-    Exell(String path) {
-        this.pathArchivo = path;
+    public Exell(String file) {
+        //this.pathArchivo = path;
         
                 try{
             /**
              * Abrir el exell
              */
-            libroDeTrabajo = Workbook.getWorkbook(new File (path));
+            File temp = new File(file);
+                 
+            
+            libroDeTrabajo = Workbook.getWorkbook(temp);
         }
         //----------------------------------------------------------
         catch (IOException ioex) {
@@ -80,31 +83,31 @@ public class Exell implements ExcellInterface{
 
 
     @Override
-    public ArrayList<Tickets> cargarTiketsDeArchivo() {
+    public void cargarTiketsDeArchivo() {
         setHojaActual(libroDeTrabajo.getSheet(0));
-        ArrayList<Tickets> lista = new ArrayList();
+        //ArrayList<Tickets> lista = new ArrayList();
         int numFilas = hojaActual.getRows();
-        for( int fila = 0; fila < numFilas; fila++ ){
-            Tickets ticket= new Tickets();
+        for( int fila = 0; fila+1 < numFilas; fila++ ){
+            //Tickets ticket= new Tickets();
             
             Date fechaHoraActual = new Date();
             String strFechaHora = new SimpleDateFormat("ddMMyyyyHHmm").format(fechaHoraActual);
-            System.out.print(strFechaHora+"   ");  //<--------------------------------------------------------
+            System.out.print(strFechaHora+"   "+fila+"  ");  //<--------------------------------------------------------
             
-            ticket.setFechayHoraRecepcion(strFechaHora);
-            
-            Cell celdaIDcliente = hojaActual.getCell(fila+1,0);
-            ticket.setID_CLIENTE(celdaIDcliente.getContents());        
+            //ticket.setFechayHoraRecepcion(strFechaHora);
+            Sheet hoja = libroDeTrabajo.getSheet(0);
+            Cell celdaIDcliente = hoja.getCell(fila+1,0);
+            //ticket.setID_CLIENTE(celdaIDcliente.getContents());        
             System.out.print(celdaIDcliente.getContents()+"   ");  //<--------------------------------------------------------
             
-            Cell celdaAsunto = hojaActual.getCell(fila+1,2);
-            ticket.setAsunto(celdaAsunto.getContents()); 
-            System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
+          //  Cell celdaAsunto = hojaActual.getCell(fila+1,2);
+            //ticket.setAsunto(celdaAsunto.getContents()); 
+          //  System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
         }
         
         
         
-        return  lista;
+        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

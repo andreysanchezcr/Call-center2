@@ -9,7 +9,7 @@ public class Persona {
     public String correo;
     public String contraseña;
     private String categoria;
-    private boolean conectado;
+    public boolean conectado;
     private boolean tipo;
     
     private Persona admn ;
@@ -26,6 +26,15 @@ public class Persona {
         this.categoria = categoria;
         this.tipo = tipo;
         
+    }
+    public void conectar(){
+        conectado=true;
+    }
+    public void desconectar(){
+        conectado=false;
+    }
+    public boolean getEstado(){
+        return conectado;
     }
     
     

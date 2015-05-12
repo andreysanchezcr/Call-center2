@@ -22,15 +22,38 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
      */
     Servidor servidor;
     ArrayList listaEmpleados;
-    public ServidorVentana(Servidor servidor) {
+    boolean luis;
+    boolean fernando;
+    boolean junior;
+    public ServidorVentana() {
        this.servidor=servidor;
         initComponents();
         setLocationRelativeTo(null);
-        listaEmpleados=servidor.getListaEmpleados();
         this.setVisible(true);
-        jLabel2.setText(((Persona)listaEmpleados.get(0)).getNombre());
-        jLabel3.setText(((Persona)listaEmpleados.get(1)).getNombre());
-        jLabel4.setText(((Persona)listaEmpleados.get(2)).getNombre());
+        
+    }
+    public void setLabel(){
+        jLabel2.setText("Conectado");
+    }
+    public void setConectados(){
+        if(((Persona)listaEmpleados.get(1)).getEstado()){
+            jLabel2.setText("Fernando conectado");
+        }else{
+            jLabel2.setText("Fernando desconectado");
+        }
+        if(((Persona)listaEmpleados.get(2)).getEstado()){
+            jLabel3.setText("Luis conectado");
+        }else{
+            jLabel3.setText("Luis desconectado");
+        }
+        if(((Persona)listaEmpleados.get(1)).getEstado()){
+            jLabel4.setText("Junior conectado");
+        }else{
+            jLabel4.setText("Junior desconectado");
+        }
+    }
+    public void setListaEmpleados(ArrayList lista){
+        listaEmpleados=lista;
     }
 
     /**
@@ -243,6 +266,8 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
+    
 }

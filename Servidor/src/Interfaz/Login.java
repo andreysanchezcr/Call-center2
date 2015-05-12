@@ -324,12 +324,14 @@ public class Login extends javax.swing.JFrame {
         }
         Persona administrador =verificarAdministrador(pUserName, pPassword);
         if(administrador!=null){
-            Servidor servidor=new Servidor();
+            
+            ServidorVentana vServidor=new ServidorVentana();
+            Thread hiloVentana =new Thread(vServidor);
+            Servidor servidor=new Servidor(vServidor);
             Thread hilo=new Thread(servidor);
             hilo.start();
-            ServidorVentana vServidor=new ServidorVentana(servidor);
-           
-            //Runnable h1= =new Runnable(servidor);
+            hiloVentana.start();
+//Runnable h1= =new Runnable(servidor);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, "Los datos son incorrectos");

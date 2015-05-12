@@ -44,7 +44,7 @@ public class Cliente
         try
         {
             //creaYVisualizaVentana();
-            socket = new Socket("192.168.0.12", 5557);
+            socket = new Socket("localhost", 5557);
             
             DataOutputStream flujoSaliente = new DataOutputStream(socket.getOutputStream());
             DataInputStream flujoEntrante = new DataInputStream(socket.getInputStream());

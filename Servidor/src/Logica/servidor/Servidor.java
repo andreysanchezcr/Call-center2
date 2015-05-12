@@ -31,8 +31,8 @@ public class Servidor implements Runnable{
     private void registrarPersonas() {
         Persona admn = new Persona("Admin", "admin@tec.ac.cr", "12345", null, true);
         Persona rojo = new Persona("Fernando", "fernando@tec.ac.cr", "12345", "Rojo", true);
-        Persona verde = new Persona("Luis", "luis@tec.ac.cr", "12345", null, true);
-        Persona amarillo = new Persona("Junior", "junior@tec.ac.cr", "12345", null, true);
+        Persona verde = new Persona("Luis", "luis@tec.ac.cr", "12345", "Amarillo", true);
+        Persona amarillo = new Persona("Junior", "junior@tec.ac.cr", "12345", "Verde", true);
         listaEmpleados.add(admn);
         listaEmpleados.add((Persona) verde);
         listaEmpleados.add((Persona) rojo);
@@ -49,24 +49,23 @@ public class Servidor implements Runnable{
      *
      * @param args
      */
-    
+    private ServidorVentana ventana;
 
     /**
      * Se mete en un bucle infinito para ateder clientes, lanzando un hilo para
      * cada uno de ellos.
      */
-    public Servidor() {
+    public Servidor(ServidorVentana ventana) {
         registrarPersonas();
+        this.ventana=ventana;
+        ventana.setListaEmpleados(listaEmpleados);
+        ventana.setConectados();
         
         
         
             
         }
-    public static void main(String[] args) {
-       
-        Servidor server=new Servidor();
-        
-    }
+    
     
     public ArrayList getListaEmpleados(){
         return listaEmpleados;
@@ -103,6 +102,11 @@ public class Servidor implements Runnable{
                         sucess = true;
                         nombre=temp.getNombre();
                         tipo=temp.getCategoria();
+                        temp.conectar();
+                        listaEmpleados.set(i, temp);
+                        
+                        break;
+                        
 
                     }
 
@@ -113,6 +117,8 @@ public class Servidor implements Runnable{
                     saliente.writeInt(0);
                     
                     System.out.println("Correcto");
+                    ventana.setListaEmpleados(listaEmpleados);
+                    ventana.setConectados();
                     saliente.writeUTF(nombre);
                     saliente.writeUTF(tipo);
                     Runnable nuevoCliente = new HiloDeCliente_1(charla, cliente);

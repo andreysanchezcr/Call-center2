@@ -88,7 +88,6 @@ public class Exell implements ExcellInterface{
         //ArrayList<Tickets> lista = new ArrayList();
         int numFilas = hojaActual.getRows();
         for( int fila = 0; fila+1 < numFilas; fila++ ){
-            //Tickets ticket= new Tickets();
             
             Date fechaHoraActual = new Date();
             String strFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActual);

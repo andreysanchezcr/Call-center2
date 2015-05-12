@@ -1,4 +1,4 @@
-package call.center;
+package Logica;
 
 public class Tickets {
     private String asunto;
@@ -11,6 +11,14 @@ public class Tickets {
     
     private String FechayHoraRecepcion;
     private String ID_CLIENTE;        
+    
+    public Tickets(String FechayHoraRecepcion, String ID_CLIENTE, String asunto){
+        this.FechayHoraRecepcion = FechayHoraRecepcion;
+        this.ID_CLIENTE = ID_CLIENTE;
+        this.asunto = asunto;
+    }
+    
+    
     
         public String getFechayHoraRecepcion() {
         return FechayHoraRecepcion;

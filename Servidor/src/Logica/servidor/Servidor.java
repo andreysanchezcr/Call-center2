@@ -1,6 +1,7 @@
 package Logica.servidor;
 
 import Interfaz.ServidorVentana;
+import Logica.Exell;
 import Logica.Persona;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -61,6 +62,12 @@ public class Servidor implements Runnable{
         
             
         }
+    public static void main(String[] args) {
+       
+        Servidor server=new Servidor();
+        
+    }
+    
     public ArrayList getListaEmpleados(){
         return listaEmpleados;
     }

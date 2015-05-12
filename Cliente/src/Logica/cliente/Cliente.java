@@ -72,6 +72,22 @@ public class Cliente
             e.printStackTrace();
         }
     }
+    public static void main(String[] args) {
+       
+        Cliente cl=new Cliente("fernando@tec.ac.cr","12345",null);
+       
+        
+        
+        
+        
+        
+        
+        
+            
+        
+        
+    }
+
     
 
     /**

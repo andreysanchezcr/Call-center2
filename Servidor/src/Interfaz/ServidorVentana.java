@@ -68,8 +68,6 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jLabel5 = new javax.swing.JLabel();
         btnCargarTickets = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -78,6 +76,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblPathArchivoActual = new javax.swing.JLabel();
+        Lista = new java.awt.List();
 
         jLabel5.setText("jLabel5");
 
@@ -96,11 +95,10 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("Servidor para categorizar los tickets");
 
-        jScrollPane1.setViewportView(jList1);
-
         jButton2.setBackground(new java.awt.Color(51, 204, 0));
         jButton2.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         jButton2.setText("VERDE");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -110,6 +108,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jButton3.setBackground(new java.awt.Color(255, 255, 0));
         jButton3.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         jButton3.setText("AMARILLO");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -119,6 +118,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         jButton4.setText("ROJO");
+        jButton4.setEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -157,6 +157,17 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                 .addContainerGap(105, Short.MAX_VALUE))
         );
 
+        Lista.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ListaItemStateChanged(evt);
+            }
+        });
+        Lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,12 +179,12 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPathArchivoActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPathArchivoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCargarTickets)))
+                                .addComponent(btnCargarTickets))
+                            .addComponent(Lista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -194,18 +205,19 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
+                                .addGap(32, 32, 32)
                                 .addComponent(jButton2)
                                 .addGap(19, 19, 19)
                                 .addComponent(jButton3)
-                                .addGap(18, 18, 18)
+                                .addGap(21, 21, 21)
                                 .addComponent(jButton4)
-                                .addGap(0, 29, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
+                                .addGap(18, 44, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Lista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCargarTickets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblPathArchivoActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -229,6 +241,18 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         
         myExell.cargarTiketsDeArchivo();
         myExell.cargarTiketsVerdesDeArchivo();
+        String result = "";
+        ArrayList <Tickets> ArrayListTicket =  myExell.cargarTiketsDeArchivo();//Array de los tickets        
+        for (Tickets ticket: ArrayListTicket) {
+            result = "ID ";
+            result += Integer.toString(ticket.getIDTicket());
+            result += "Asunto ";
+            result += (ticket.getAsunto());
+            Lista.add(result);
+            result = "";
+        }
+    
+        
     }//GEN-LAST:event_btnCargarTicketsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -243,12 +267,23 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void ListaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListaItemStateChanged
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton4.setEnabled(true);
+    }//GEN-LAST:event_ListaItemStateChanged
+
+    private void ListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static java.awt.List Lista;
     private javax.swing.JButton btnCargarTickets;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -258,9 +293,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPathArchivoActual;
     // End of variables declaration//GEN-END:variables
 

@@ -140,11 +140,10 @@ public class Exell implements ExcellInterface{
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             copiaDeLibro =  Workbook.createWorkbook(new File ("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls"),libroDeTrabajo);
             
-            
-            
-            WritableSheet hojaTiketsRojos = copiaDeLibro.getSheet(1);
-            hojaTiketsRojos.
-            
+            WritableSheet hojaTiketsPendientes = copiaDeLibro.getSheet(0);
+            WritableSheet hojaTiketsVerdes     = copiaDeLibro.getSheet(1);
+            WritableSheet hojaTiketsAmarillos  = copiaDeLibro.getSheet(2);
+            WritableSheet hojaTiketsRojos      = copiaDeLibro.getSheet(3);
             
         } catch (IOException wse) {
            System.out.println("ERROR---->>"+wse.getMessage());

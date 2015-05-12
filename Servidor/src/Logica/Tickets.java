@@ -5,6 +5,28 @@ public class Tickets {
     private int IDTicket;
     private String categoria;
     private String estado;
+
+
+    
+    
+    private String FechayHoraRecepcion;
+    private String ID_CLIENTE;        
+    
+        public String getFechayHoraRecepcion() {
+        return FechayHoraRecepcion;
+    }
+
+    public void setFechayHoraRecepcion(String FechayHoraRecepcion) {
+        this.FechayHoraRecepcion = FechayHoraRecepcion;
+    }
+
+    public String getID_CLIENTE() {
+        return ID_CLIENTE;
+    }
+
+    public void setID_CLIENTE(String ID_CLIENTE) {
+        this.ID_CLIENTE = ID_CLIENTE;
+    }
     
     public Tickets(String asunto, int IDTicket, String categoria, String estado){
         this.asunto = asunto;

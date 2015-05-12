@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.File;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Import Java Pakages to handle exel files
@@ -37,14 +39,17 @@ public class Exell implements ExcellInterface{
 
     Exell(){}
     
-    Exell(String path) {
-        this.pathArchivo = path;
+    public Exell(String file) {
+        //this.pathArchivo = path;
         
                 try{
             /**
              * Abrir el exell
              */
-            libroDeTrabajo = Workbook.getWorkbook(new File (path));
+            File temp = new File(file);
+                 
+            
+            libroDeTrabajo = Workbook.getWorkbook(temp);
         }
         //----------------------------------------------------------
         catch (IOException ioex) {
@@ -78,36 +83,42 @@ public class Exell implements ExcellInterface{
     
     
 
-
+    /**
+     * Metodo que carga los tikets pendientes del .xls 
+     * @return Lista con Tikets con la informacion principal, hora de ingreso, ID cliente y Asunto
+     */
     @Override
     public ArrayList<Tickets> cargarTiketsDeArchivo() {
+        
         setHojaActual(libroDeTrabajo.getSheet(0));
-        ArrayList<Tickets> lista = new ArrayList();
+        ArrayList<Tickets> listaTikets = new ArrayList();
+        
         int numFilas = hojaActual.getRows();
-        for( int fila = 0; fila < numFilas; fila++ ){
-            Tickets ticket= new Tickets();
+        
+        for( int fila = 0; fila+1 < numFilas; fila++ ){
             
             Date fechaHoraActual = new Date();
-            String strFechaHora = new SimpleDateFormat("ddMMyyyyHHmm").format(fechaHoraActual);
+            String strFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActual);
             System.out.print(strFechaHora+"   ");  //<--------------------------------------------------------
             
-            ticket.setFechayHoraRecepcion(strFechaHora);
-            
-            Cell celdaIDcliente = hojaActual.getCell(fila+1,0);
-            ticket.setID_CLIENTE(celdaIDcliente.getContents());        
+            Sheet hoja = libroDeTrabajo.getSheet(0);
+            Cell celdaIDcliente = hoja.getCell(1,fila+1);
+            String strIDcliente = celdaIDcliente.getContents();       
             System.out.print(celdaIDcliente.getContents()+"   ");  //<--------------------------------------------------------
             
-            Cell celdaAsunto = hojaActual.getCell(fila+1,2);
-            ticket.setAsunto(celdaAsunto.getContents()); 
+            Cell celdaAsunto = hojaActual.getCell(2,fila+1);
+            String strAsunto = celdaAsunto.getContents();
             System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
+            
+            Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto );
+            listaTikets.add(ticket);
         }
         
-        
-        
-        return  lista;
+        return listaTikets;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
     public ArrayList<Tickets> cargarTiketsRojosDeArchivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -125,7 +136,19 @@ public class Exell implements ExcellInterface{
 
     @Override
     public void cargarGuardarCambiosEnArchivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            copiaDeLibro =  Workbook.createWorkbook(new File ("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls"),libroDeTrabajo);
+            
+            WritableSheet hojaTiketsPendientes = copiaDeLibro.getSheet(0);
+            WritableSheet hojaTiketsVerdes     = copiaDeLibro.getSheet(1);
+            WritableSheet hojaTiketsAmarillos  = copiaDeLibro.getSheet(2);
+            WritableSheet hojaTiketsRojos      = copiaDeLibro.getSheet(3);
+            
+        } catch (IOException wse) {
+           System.out.println("ERROR---->>"+wse.getMessage());
+        }
+    
     }
 
     
@@ -133,7 +156,7 @@ public class Exell implements ExcellInterface{
         public static void main(String[] args) {
        
         System.out.println("hooooola MUndo");
-        Exell myExell = new  Exell("/root/NetBeansProjects/Principal/src/principal/SampleData.xls");
+        Exell myExell = new  Exell("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls");
         myExell.cargarTiketsDeArchivo();
        
         

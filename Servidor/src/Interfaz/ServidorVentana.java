@@ -1,7 +1,8 @@
 package Interfaz;
 import javax.swing.*;
 import java.io.File;
-
+import Logica.*;//<---------------------------------------------------------------------Despues le borro
+import java.util.ArrayList;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -188,6 +189,9 @@ public class ServidorVentana extends javax.swing.JFrame {
         File archivoActual= ventanaSeleccionArchivo.getSelectedFile();
         String pathArchivo = archivoActual.getAbsolutePath();
         lblPathArchivoActual.setText(pathArchivo);
+        Exell myExell= new Exell(pathArchivo);
+        
+        myExell.cargarTiketsDeArchivo();
     }//GEN-LAST:event_btnCargarTicketsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

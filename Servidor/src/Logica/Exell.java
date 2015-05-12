@@ -91,18 +91,18 @@ public class Exell implements ExcellInterface{
             //Tickets ticket= new Tickets();
             
             Date fechaHoraActual = new Date();
-            String strFechaHora = new SimpleDateFormat("ddMMyyyyHHmm").format(fechaHoraActual);
-            System.out.print(strFechaHora+"   "+fila+"  ");  //<--------------------------------------------------------
+            String strFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActual);
+            System.out.print(strFechaHora+"   ");  //<--------------------------------------------------------
             
             //ticket.setFechayHoraRecepcion(strFechaHora);
             Sheet hoja = libroDeTrabajo.getSheet(0);
-            Cell celdaIDcliente = hoja.getCell(fila+1,0);
+            Cell celdaIDcliente = hoja.getCell(1,fila+1);
             //ticket.setID_CLIENTE(celdaIDcliente.getContents());        
             System.out.print(celdaIDcliente.getContents()+"   ");  //<--------------------------------------------------------
             
-          //  Cell celdaAsunto = hojaActual.getCell(fila+1,2);
+            Cell celdaAsunto = hojaActual.getCell(2,fila+1);
             //ticket.setAsunto(celdaAsunto.getContents()); 
-          //  System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
+            System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
         }
         
         
@@ -136,7 +136,7 @@ public class Exell implements ExcellInterface{
         public static void main(String[] args) {
        
         System.out.println("hooooola MUndo");
-        Exell myExell = new  Exell("/root/NetBeansProjects/Principal/src/principal/SampleData.xls");
+        Exell myExell = new  Exell("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls");
         myExell.cargarTiketsDeArchivo();
        
         

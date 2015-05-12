@@ -3,6 +3,7 @@ package Logica.cliente;
 
 import Interfaz.Login;
 import Interfaz.ClienteVentana;
+import Logica.Persona;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class Cliente
     /** Panel con la ventana del cliente */
     private PanelCliente panel;
     ArrayList listaEmpleados= new ArrayList();
-    ObjectInputStream objeto_entrante;
+    //ObjectInputStream objeto_entrante;
 
     /**
      * Arranca el Cliente de chat.
@@ -46,14 +47,18 @@ public class Cliente
             socket = new Socket("localhost", 5557);
             DataOutputStream flujoSaliente = new DataOutputStream(socket.getOutputStream());
             DataInputStream flujoEntrante = new DataInputStream(socket.getInputStream());
-            objeto_entrante= new ObjectInputStream(socket.getInputStream());
+            //objeto_entrante= new ObjectInputStream(socket.getInputStream());
             flujoSaliente.writeUTF(correo+" "+contrasena);
             
             int indicador=flujoEntrante.readInt();
             System.out.println(indicador);
             if(indicador==0){
                 parent.dispose();
-                ClienteVentana ventana = new ClienteVentana();
+                String nombre=flujoEntrante.readUTF();
+                String tipo=flujoEntrante.readUTF();
+                ClienteVentana ventana = new ClienteVentana(nombre,socket,tipo);
+                //Persona persona = (Persona) objeto_entrante.readObject();
+                //this.listaEmpleados=(ArrayList)objeto_entrante.readObject();
                 //listaEmpleados= getLista();
                 System.out.println("EXito");
                 ControlCliente control = new ControlCliente(socket, panel);

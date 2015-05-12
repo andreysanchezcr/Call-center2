@@ -1,10 +1,11 @@
 package Logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-public class Persona {
+public class Persona implements Serializable {
     private String nombre;
     private String correo;
     private String contraseña;
@@ -121,5 +122,7 @@ public class Persona {
                        "Tipo: " + isTipo() + "\n";
         return datos;
     }
+
+    
     
 }

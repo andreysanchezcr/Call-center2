@@ -1,4 +1,3 @@
-package call.center;
 
 public class Tickets {
     private String asunto;

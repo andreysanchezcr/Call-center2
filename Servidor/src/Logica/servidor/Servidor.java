@@ -23,7 +23,7 @@ public class Servidor {
 
     private void registrarPersonas() {
         Persona admn = new Persona("Admin", "admin@tec.ac.cr", "12345", null, true);
-        Persona rojo = new Persona("Fernando", "fernando@tec.ac.cr", "12345", null, true);
+        Persona rojo = new Persona("Fernando", "fernando@tec.ac.cr", "12345", "Rojo", true);
         Persona verde = new Persona("Luis", "luis@tec.ac.cr", "12345", null, true);
         Persona amarillo = new Persona("Junior", "junior@tec.ac.cr", "12345", null, true);
         listaEmpleados.add(admn);
@@ -63,27 +63,36 @@ public class Servidor {
                 dataInput = new DataInputStream(cliente.getInputStream());
                 saliente = new DataOutputStream(cliente.getOutputStream());
                 String login = dataInput.readUTF();
+                String nombre="";
+                String tipo="";
 
                 for (int i = 1; i < listaEmpleados.size(); i++) {
 
                     Persona temp = (Persona) listaEmpleados.get(i);
                     if (login.equals(temp.correo + " " + temp.contraseña)) {
                         sucess = true;
+                        nombre=temp.getNombre();
+                        tipo=temp.getCategoria();
 
                     }
                     //socketServidor.wait();
 
                 }
-
+                Persona h = new Persona("","","","",true);
                 if (sucess) {
-                    ObjectOutputStream objeto_saliente=new ObjectOutputStream(cliente.getOutputStream());
+                    //ObjectOutputStream objeto_saliente=new ObjectOutputStream(cliente.getOutputStream());
 
                     saliente.writeInt(0);
-                    objeto_saliente.writeObject(listaEmpleados);
+                    //objeto_saliente.writeObject(listaEmpleados);
                     Runnable nuevoCliente = new HiloDeCliente_1(charla, cliente);
                     Thread hilo = new Thread(nuevoCliente);
                     hilo.start();
                     System.out.println("Correcto");
+                    saliente.writeUTF(nombre);
+                    saliente.writeUTF(tipo);
+                   // ArrayList tem = new ArrayList();
+                   // tem.add("hola");
+                   // objeto_saliente.writeObject(tem);
                     login = "";
                     
 
@@ -92,6 +101,7 @@ public class Servidor {
                     System.out.println("Incorrecto");
                     saliente.writeInt(-1);
                 }
+                
 
             }
         } catch (Exception e) {

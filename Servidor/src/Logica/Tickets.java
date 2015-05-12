@@ -26,6 +26,35 @@ public class Tickets {
         this.ID_CLIENTE = ID_CLIENTE;
         this.asunto = asunto;
     }
+    /**
+     * Contructor con todos los atributos (Exell.java creara objetos completos a partir de la carga del archivo"Tickets Rojos, Amarillos y Verdes")
+     * @param FechayHoraRecepcion Columna del Exell
+     * @param ID_CLIENTE Columna 0 del Exell
+     * @param asunto     Columna 1 del Exell
+     * @param IDTicket   Columna 2 del Exell
+     * @param categoria  Columna 3 del Exell
+     * @param ID_EMPLEADO Columna 4 del Exell
+     * @param fechayHoraAtencion Columna 5 del Exell
+     * @param tiempoSegundos Columna 6 del Exell
+     * @param Comentario Columna 7 del Exell
+     * @param estado     Columna 8 del Exell
+     */
+    public Tickets(String FechayHoraRecepcion, String ID_CLIENTE, String asunto, 
+                   int IDTicket, String categoria, String ID_EMPLEADO, 
+                   String fechayHoraAtencion,String tiempoSegundos, 
+                   String Comentario, String estado){
+    
+        this.FechayHoraRecepcion=FechayHoraRecepcion;
+        this.ID_CLIENTE=ID_CLIENTE;    
+        this.asunto=asunto;
+        this.IDTicket=IDTicket;
+        this.categoria=categoria;
+        this.ID_EMPLEADO=ID_EMPLEADO;
+        this.fechayHoraAtencion=fechayHoraAtencion;
+        this.tiempoSegundos=tiempoSegundos;
+        this.Comentario=Comentario;
+        this.estado=estado;
+    }
     
     public Tickets(String asunto, int IDTicket, String categoria, String estado){
         this.asunto = asunto;

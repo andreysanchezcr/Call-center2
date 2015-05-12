@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
+
 package Logica;
->>>>>>> origin/master
 
 public class Tickets {
     /**

@@ -3,6 +3,7 @@ package Interfaz;
 
 
 import Logica.Persona;
+import Logica.servidor.Servidor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -170,7 +171,12 @@ public class Login extends javax.swing.JFrame {
         }
         Persona administrador =verificarAdministrador(pUserName, pPassword);
         if(administrador!=null){
-            ServidorVentana ventanaServidor= new ServidorVentana();
+            Servidor servidor=new Servidor();
+            Thread hilo=new Thread(servidor);
+            hilo.start();
+            ServidorVentana vServidor=new ServidorVentana(servidor);
+           
+            //Runnable h1= =new Runnable(servidor);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, "Los datos son incorrectos");

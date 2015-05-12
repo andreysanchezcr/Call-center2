@@ -25,6 +25,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
     public ServidorVentana(Servidor servidor) {
        this.servidor=servidor;
         initComponents();
+        setLocationRelativeTo(null);
         listaEmpleados=servidor.getListaEmpleados();
         this.setVisible(true);
         jLabel2.setText(((Persona)listaEmpleados.get(0)).getNombre());

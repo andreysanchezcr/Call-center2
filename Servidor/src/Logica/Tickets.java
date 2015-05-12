@@ -1,5 +1,11 @@
 
+<<<<<<< HEAD
+
 package Logica;
+
+=======
+package Logica;
+>>>>>>> 117570015bf19a5a7cffc39be4c3c2050bac79d1
 
 public class Tickets {
     /**

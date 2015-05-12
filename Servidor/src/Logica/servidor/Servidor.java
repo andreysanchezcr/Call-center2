@@ -84,8 +84,12 @@ public class Servidor implements Runnable{
     public void run() {
         try {
             ServerSocket socketServidor = new ServerSocket(5557);
+            //socketServidor.setSoTimeout(10);
+            System.out.println(socketServidor.getInetAddress());
+            System.out.println(socketServidor.getLocalSocketAddress());
             while (true) {
                 Socket cliente = socketServidor.accept();
+                
                 dataInput = new DataInputStream(cliente.getInputStream());
                 saliente = new DataOutputStream(cliente.getOutputStream());
                 String login = dataInput.readUTF();

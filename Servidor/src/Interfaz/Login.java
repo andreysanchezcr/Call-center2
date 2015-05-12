@@ -359,7 +359,6 @@ public class Login extends javax.swing.JFrame {
             System.out.println("ACA llama a la funcion para poder hacer el login del cliente");
         }
 
-        Cliente cliente = new Cliente(pUserName,pPassword,this);
         System.out.println("entro");
 
     }//GEN-LAST:event_jButton2ActionPerformed

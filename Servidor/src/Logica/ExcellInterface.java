@@ -14,7 +14,7 @@ import java.util.ArrayList;
          * Metodos para la cargar y guardar de Tickets para el Servidor
          * @return Array de Tickets correspondientes 
          */
-        public void  cargarTiketsDeArchivo();
+        public ArrayList<Tickets>  cargarTiketsDeArchivo();
         public ArrayList<Tickets>  cargarTiketsRojosDeArchivo();
         public ArrayList<Tickets>  cargarTiketsVerdesDeArchivo();
         public ArrayList<Tickets>  cargarTiketsAmarillosDeArchivo();

@@ -1,26 +1,45 @@
 package Logica;
 
 public class Tickets {
+    /**
+     * Atributos
+     */
+    private String FechayHoraRecepcion;
+    private String ID_CLIENTE;    
     private String asunto;
-    private int IDTicket;
+    private  int   IDTicket;
     private String categoria;
+    private String ID_EMPLEADO;
+    private String fechayHoraAtencion;
+    private String tiempoSegundos;
+    private String Comentario;
     private String estado;
 
-
-    
-    
-    private String FechayHoraRecepcion;
-    private String ID_CLIENTE;        
-    
+    /**
+     * Contructor (Utilizado por Exell.java para cargar Tikets Pendientes)
+     * @param FechayHoraRecepcion Atributo seteado a la hora de la carga del archivo con la fecha y hora actuales
+     * @param ID_CLIENTE Atributo situado en la segunda columna del Exel
+     * @param asunto  Atributo ubicado en la tercera columna del Exel
+     */ 
     public Tickets(String FechayHoraRecepcion, String ID_CLIENTE, String asunto){
         this.FechayHoraRecepcion = FechayHoraRecepcion;
         this.ID_CLIENTE = ID_CLIENTE;
         this.asunto = asunto;
     }
     
+    public Tickets(String asunto, int IDTicket, String categoria, String estado){
+        this.asunto = asunto;
+        this.IDTicket = IDTicket;
+        this.categoria = categoria;
+        this.estado = estado;
+    }
     
     
-        public String getFechayHoraRecepcion() {
+    
+    /**
+     * Stters and Getters
+     */
+    public String getFechayHoraRecepcion() {
         return FechayHoraRecepcion;
     }
 
@@ -36,13 +55,6 @@ public class Tickets {
         this.ID_CLIENTE = ID_CLIENTE;
     }
     
-    public Tickets(String asunto, int IDTicket, String categoria, String estado){
-        this.asunto = asunto;
-        this.IDTicket = IDTicket;
-        this.categoria = categoria;
-        this.estado = estado;
-    }
-
     public String getAsunto() {
         return asunto;
     }
@@ -50,7 +62,7 @@ public class Tickets {
     public void setAsunto(String asunto) {
         this.asunto = asunto;
     }
-
+    
     public int getIDTicket() {
         return IDTicket;
     }
@@ -58,7 +70,7 @@ public class Tickets {
     public void setIDTicket(int IDTicket) {
         this.IDTicket = IDTicket;
     }
-
+    
     public String getCategoria() {
         return categoria;
     }
@@ -66,7 +78,39 @@ public class Tickets {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+ 
+    public String getID_EMPLEADO() {
+        return ID_EMPLEADO;
+    }
 
+    public void setID_EMPLEADO(String ID_EMPLEADO) {
+        this.ID_EMPLEADO = ID_EMPLEADO;
+    }
+
+    public String getFechayHoraAtencion() {
+        return fechayHoraAtencion;
+    }
+
+    public void setFechayHoraAtencion(String fechayHoraAtencion) {
+        this.fechayHoraAtencion = fechayHoraAtencion;
+    }
+
+    public String getTiempoSegundos() {
+        return tiempoSegundos;
+    }
+
+    public void setTiempoSegundos(String tiempoSegundos) {
+        this.tiempoSegundos = tiempoSegundos;
+    }
+
+    public String getComentario() {
+        return Comentario;
+    }
+
+    public void setComentario(String Comentario) {
+        this.Comentario = Comentario;
+    }
+    
     public String getEstado() {
         return estado;
     }

@@ -35,18 +35,19 @@ public class Exell implements ExcellInterface{
     private WritableWorkbook copiaDeLibro;    
     private String pathArchivo;
     private Sheet hojaActual;
-
+    private String pathNewFile;
+    
     Exell(){}
     
     public Exell(String file) {
         //this.pathArchivo = path;
         
-                try{
+        try{
             /**
              * Abrir el exell
              */
             File temp = new File(file);
-                 
+            pathNewFile = file;  
             
             libroDeTrabajo = Workbook.getWorkbook(temp);
         }
@@ -95,6 +96,8 @@ public class Exell implements ExcellInterface{
         int numFilas = hojaActual.getRows();
         
         for( int fila = 0; fila+1 < numFilas; fila++ ){
+            Cell celdaEstado =  hojaActual.getCell(4,fila+1);
+            if (celdaEstado.getContents()==""){
             
             Date fechaHoraActual = new Date();
             String strFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActual);
@@ -111,6 +114,7 @@ public class Exell implements ExcellInterface{
             
             Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto );
             listaTikets.add(ticket);
+            }
         }
         
         return listaTikets;
@@ -275,7 +279,31 @@ public class Exell implements ExcellInterface{
         }
         return listaTiketsAmarillos;
     }
-
+    public String cortar(String direccion){
+        String temp="";
+        int indice=0;
+        for (int i = 0; i<direccion.length();i++){
+            
+                if(direccion.charAt(i)=='/'){
+                    indice=i;
+                }
+                if(direccion.charAt(i)=='.'){
+                    String temp2="";
+                    for(int u=0;u<direccion.length();u++){
+                        if(u==indice){
+                            return "/"+temp2;
+                        }
+                        temp2=temp2+direccion.charAt(u);
+                        
+                    }
+                }
+                temp=temp+direccion.charAt(i);
+            
+            
+        }
+        return temp;
+    
+    }    
     @Override
     public void cargarGuardarCambiosEnArchivo(ArrayList<Tickets> listaPendientes,
                                                 ArrayList<Tickets> listaVerdes,
@@ -299,6 +327,8 @@ public class Exell implements ExcellInterface{
     
     
         public static void main(String[] args) {
+            
+               
        // WritableSheet hojaTiketsPendientes = copiaDeLibro.getSheet(0);
        // System.out.println("hooooola MUndo");
        // Exell myExell = new  Exell("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls");

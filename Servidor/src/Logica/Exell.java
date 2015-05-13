@@ -1,7 +1,6 @@
 
 package Logica;
 
-
 import java.util.ArrayList;
 
 import java.io.IOException;

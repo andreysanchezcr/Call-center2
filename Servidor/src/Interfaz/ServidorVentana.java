@@ -247,11 +247,11 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
             result = "ID ";
             result += Integer.toString(ticket.getIDTicket());
             result += "Asunto ";
-            result += (ticket.getAsunto());
+            result += (ticket.getAsunto());           
             Lista.add(result);
             result = "";
         }
-    
+        Lista.repaint();
         
     }//GEN-LAST:event_btnCargarTicketsActionPerformed
 

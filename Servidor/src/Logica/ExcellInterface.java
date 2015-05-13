@@ -18,6 +18,9 @@ import java.util.ArrayList;
         public ArrayList<Tickets>  cargarTiketsRojosDeArchivo();
         public ArrayList<Tickets>  cargarTiketsVerdesDeArchivo();
         public ArrayList<Tickets>  cargarTiketsAmarillosDeArchivo();
-        public void cargarGuardarCambiosEnArchivo();
+        public void cargarGuardarCambiosEnArchivo(ArrayList<Tickets> listaPendientes,
+                                                ArrayList<Tickets> listaVerdes,
+                                                ArrayList<Tickets> listaAmarillos,
+                                                ArrayList<Tickets> listaRojos);
     
 }

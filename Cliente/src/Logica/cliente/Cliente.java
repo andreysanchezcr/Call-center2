@@ -29,7 +29,7 @@ public class Cliente
     /** Panel con la ventana del cliente */
     private PanelCliente panel;
     ArrayList listaEmpleados= new ArrayList();
-    //ObjectInputStream objeto_entrante;
+    ObjectInputStream objeto_entrante;
 
     /**
      * Arranca el Cliente de chat.
@@ -44,10 +44,10 @@ public class Cliente
         try
         {
             //creaYVisualizaVentana();
-            socket = new Socket("localhost", 5557);
+            socket = new Socket("192.168.0.5", 5557);
             DataOutputStream flujoSaliente = new DataOutputStream(socket.getOutputStream());
             DataInputStream flujoEntrante = new DataInputStream(socket.getInputStream());
-            //objeto_entrante= new ObjectInputStream(socket.getInputStream());
+            
             flujoSaliente.writeUTF(correo+" "+contrasena);
             
             int indicador=flujoEntrante.readInt();
@@ -57,9 +57,6 @@ public class Cliente
                 String nombre=flujoEntrante.readUTF();
                 String tipo=flujoEntrante.readUTF();
                 ClienteVentana ventana = new ClienteVentana(nombre,socket,tipo);
-                //Persona persona = (Persona) objeto_entrante.readObject();
-                //this.listaEmpleados=(ArrayList)objeto_entrante.readObject();
-                //listaEmpleados= getLista();
                 System.out.println("EXito");
                 ControlCliente control = new ControlCliente(socket, panel);
                 
@@ -79,12 +76,5 @@ public class Cliente
     /**
      * Crea una ventana, le mete dentro el panel para el cliente y la visualiza
      */
-    private void creaYVisualizaVentana()
-    {
-        JFrame v = new JFrame();
-        panel = new PanelCliente(v.getContentPane());
-        v.pack();
-        v.setVisible(true);
-        v.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
+   
 }

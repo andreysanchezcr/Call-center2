@@ -1,8 +1,10 @@
 package Logica.servidor;
 
+import Interfaz.ServidorVentana;
 import Logica.Persona;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -17,9 +19,13 @@ import javax.swing.DefaultListModel;
  * @author Chuidiang
  *
  */
-public class Servidor {
+public class Servidor implements Runnable{
 
     ArrayList listaEmpleados = new ArrayList();
+    ObjectInputStream objeto;
+    DataInputStream dataInput;
+        DataOutputStream saliente;
+        boolean sucess = false;
 
     private void registrarPersonas() {
         Persona admn = new Persona("Admin", "admin@tec.ac.cr", "12345", null, true);
@@ -42,9 +48,7 @@ public class Servidor {
      *
      * @param args
      */
-    public static void main(String[] args) {
-        new Servidor();
-    }
+    
 
     /**
      * Se mete en un bucle infinito para ateder clientes, lanzando un hilo para
@@ -52,10 +56,25 @@ public class Servidor {
      */
     public Servidor() {
         registrarPersonas();
-        DataInputStream dataInput;
-        DataOutputStream saliente;
-        boolean sucess = false;
+        
+        
+        
+            
+        }
+    public ArrayList getListaEmpleados(){
+        return listaEmpleados;
+    }
+        
+        
+        
+        
+        
+        
 
+        
+
+    
+    public void run() {
         try {
             ServerSocket socketServidor = new ServerSocket(5557);
             while (true) {
@@ -75,24 +94,21 @@ public class Servidor {
                         tipo=temp.getCategoria();
 
                     }
-                    //socketServidor.wait();
 
                 }
-                Persona h = new Persona("","","","",true);
+                
                 if (sucess) {
-                    //ObjectOutputStream objeto_saliente=new ObjectOutputStream(cliente.getOutputStream());
 
                     saliente.writeInt(0);
-                    //objeto_saliente.writeObject(listaEmpleados);
-                    Runnable nuevoCliente = new HiloDeCliente_1(charla, cliente);
-                    Thread hilo = new Thread(nuevoCliente);
-                    hilo.start();
+                    
                     System.out.println("Correcto");
                     saliente.writeUTF(nombre);
                     saliente.writeUTF(tipo);
-                   // ArrayList tem = new ArrayList();
-                   // tem.add("hola");
-                   // objeto_saliente.writeObject(tem);
+                    Runnable nuevoCliente = new HiloDeCliente_1(charla, cliente);
+                    Thread hilo = new Thread(nuevoCliente);
+                    hilo.start();
+                    
+                  
                     login = "";
                     
 
@@ -101,11 +117,12 @@ public class Servidor {
                     System.out.println("Incorrecto");
                     saliente.writeInt(-1);
                 }
+                    
                 
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-}
+    }    }
+

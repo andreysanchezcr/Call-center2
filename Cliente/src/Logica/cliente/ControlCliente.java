@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Clase que atiende el socket y las peticiones de usuario. 
@@ -24,7 +26,7 @@ public class ControlCliente implements ActionListener, Runnable
 
     /** Panel con los controles para el usuario */
     private PanelCliente panel;
-
+    ArrayList lista;
     /**
      * Contruye una instancia de esta clase, lanzando un hilo para atender al
      * socket.
@@ -36,9 +38,12 @@ public class ControlCliente implements ActionListener, Runnable
         this.panel = panel;
         try
         {
+            ObjectInputStream objetoEntrante=new ObjectInputStream(socket.getInputStream());
+            lista=(ArrayList)objetoEntrante.readObject();
+            System.out.println(lista.get(0));
             dataInput = new DataInputStream(socket.getInputStream());
             dataOutput = new DataOutputStream(socket.getOutputStream());
-            panel.addActionListener(this);
+            
             Thread hilo = new Thread(this);
             hilo.start();
         } catch (Exception e)
@@ -56,7 +61,7 @@ public class ControlCliente implements ActionListener, Runnable
     {
         try
         {
-            dataOutput.writeUTF(panel.getTexto());
+            //dataOutput.writeUTF(panel.getTexto());
         } catch (Exception excepcion)
         {
             excepcion.printStackTrace();
@@ -74,8 +79,8 @@ public class ControlCliente implements ActionListener, Runnable
             while (true)
             {
                 String texto = dataInput.readUTF();
-                panel.addTexto(texto);
-                panel.addTexto("\n");
+                //panel.addTexto(texto);
+                //panel.addTexto("\n");
             }
         } catch (Exception e)
         {

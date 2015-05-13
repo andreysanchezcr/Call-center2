@@ -3,7 +3,11 @@ package Logica.servidor;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListDataEvent;
@@ -32,10 +36,16 @@ public class HiloDeCliente_1 implements Runnable, ListDataListener
      * @param charla La lista de textos que componen la charla del chat
      * @param socket Socket con el cliente.
      */
-    public HiloDeCliente_1(DefaultListModel charla, Socket socket)
+    public HiloDeCliente_1(DefaultListModel charla, Socket socket) throws IOException
     {
+        
         this.charla = charla;
         this.socket = socket;
+        ArrayList lista = new ArrayList();
+        lista.add("PERE");
+        ObjectOutputStream salienteServidor=new ObjectOutputStream(socket.getOutputStream());
+        salienteServidor.writeObject(lista);
+        
         try
         {
             dataInput = new DataInputStream(socket.getInputStream());
@@ -75,17 +85,7 @@ public class HiloDeCliente_1 implements Runnable, ListDataListener
      * cuando lo mete este mismo hilo. De esta manera, lo que un cliente escriba,
      * se le reenviar� para que se muestre en el textArea.
      */
-    public void intervalAdded(ListDataEvent e)
-    {
-        String texto = (String) charla.getElementAt(e.getIndex0());
-        try
-        {
-            dataOutput.writeUTF(texto);
-        } catch (Exception excepcion)
-        {
-            excepcion.printStackTrace();
-        }
-    }
+    
 
     /** No hace nada */
     public void intervalRemoved(ListDataEvent e)
@@ -95,5 +95,10 @@ public class HiloDeCliente_1 implements Runnable, ListDataListener
     /** No hace nada */
     public void contentsChanged(ListDataEvent e)
     {
+    }
+
+    @Override
+    public void intervalAdded(ListDataEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

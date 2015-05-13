@@ -201,6 +201,10 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         Exell myExell= new Exell(pathArchivo);
         
         myExell.cargarTiketsDeArchivo();
+        myExell.cargarTiketsVerdesDeArchivo();
+        myExell.cargarTiketsAmarillosDeArchivo();
+        myExell.cargarTiketsRojosDeArchivo();
+        
     }//GEN-LAST:event_btnCargarTicketsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

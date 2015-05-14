@@ -341,29 +341,19 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargarTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTicketsActionPerformed
+      //================FIle Chooser=========================//
         JFileChooser ventanaSeleccionArchivo = new JFileChooser();
         ventanaSeleccionArchivo.showOpenDialog(null);
         File archivoActual= ventanaSeleccionArchivo.getSelectedFile();
         String pathArchivo = archivoActual.getAbsolutePath();
         lblPathArchivoActual.setText(pathArchivo);
+        //====================================================//
         
-        Exell myExell= new Exell(pathArchivo);
+       
         
-        
-        System.out.println(myExell.cortar("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls")); 
-        
-        myExell.cargarTiketsDeArchivo();
-        myExell.cargarTiketsVerdesDeArchivo();
-        String result = "";
-        ArrayList <Tickets> ArrayListTicket =  myExell.cargarTiketsDeArchivo();//Array de los tickets        
-        for (Tickets ticket: ArrayListTicket) {
-            result = "ID ";
-            result += Integer.toString(ticket.getIDTicket());
-            result += "Asunto ";
-            result += (ticket.getAsunto());           
-            Lista.add(result);
-            result = "";
-        }
+        MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo);
+
+
         Lista.repaint();
         
     }//GEN-LAST:event_btnCargarTicketsActionPerformed

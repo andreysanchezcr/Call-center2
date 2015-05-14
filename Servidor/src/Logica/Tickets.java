@@ -26,10 +26,11 @@ public class Tickets {
      * @param ID_CLIENTE Atributo situado en la segunda columna del Exel
      * @param asunto  Atributo ubicado en la tercera columna del Exel
      */ 
-    public Tickets(String FechayHoraRecepcion, String ID_CLIENTE, String asunto){
+    public Tickets(String FechayHoraRecepcion, String ID_CLIENTE, String asunto, int IDTicket){
         this.FechayHoraRecepcion = FechayHoraRecepcion;
         this.ID_CLIENTE = ID_CLIENTE;
         this.asunto = asunto;
+        this.IDTicket = IDTicket;
     }
     /**
      * Contructor con todos los atributos (Exell.java creara objetos completos a partir de la carga del archivo"Tickets Rojos, Amarillos y Verdes")

@@ -112,7 +112,9 @@ public class Exell implements ExcellInterface{
             String strAsunto = celdaAsunto.getContents();
             System.out.println(celdaAsunto.getContents());  //<--------------------------------------------------------
             
-            Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto );
+            
+            
+            Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto, str);
             listaTikets.add(ticket);
             }
         }

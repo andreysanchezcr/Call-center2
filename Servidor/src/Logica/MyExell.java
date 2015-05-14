@@ -25,6 +25,9 @@ import jxl.read.biff.BiffException;
  * Para el cargado de Tikets nuevos al sistema y el guardado de los cambios es ellos.
  */
 public abstract class MyExell {
+    
+    public static int ID_Secuencia = 0;
+    
     public static Workbook libroDeTrabajo;
     public static WritableWorkbook copiaDeLibro;
     public static WritableSheet hojaTikets;
@@ -74,23 +77,28 @@ public abstract class MyExell {
         int numFilas = hojaActual.getRows();
         
         for( int fila = 0; fila+1 < numFilas; fila++ ){
-            
-            //Validacion de cargar solo Tickets Pendientes
+             
+     
+//Validacion de cargar solo Tickets Pendientes
             Cell celdaEstado =  hojaActual.getCell(4,fila+1);
             if (celdaEstado.getContents()==""){
             
-            
+            ID_Secuencia ++;
+                
             Date fechaHoraActual = new Date();
             String strFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActual);
             
             
             //String para el Jlist para desplegar la informcion de los tikets    
-            String strDisplayToLista = "❧ ID  ";
+            String strDisplayToLista = "❧ ID:  ";
             
             
             Cell celdaIDcliente = hojaActual.getCell(1,fila+1);
             String strIDcliente = celdaIDcliente.getContents();       
-            strDisplayToLista += strIDcliente;
+            
+            strDisplayToLista += Integer.toString(ID_Secuencia);
+            
+           
             
             strDisplayToLista += "   Asunto: ";
             
@@ -99,7 +107,8 @@ public abstract class MyExell {
             strDisplayToLista += strAsunto;
                     
             
-            Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto );
+            
+            Tickets ticket = new Tickets(strFechaHora, strIDcliente, strAsunto ,ID_Secuencia);
             listaTikets.add(ticket);
             Lista.add(strDisplayToLista); // Adding to JList Lista in Interfaz
             }

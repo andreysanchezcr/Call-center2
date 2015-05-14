@@ -27,7 +27,7 @@ import jxl.read.biff.BiffException;
 public abstract class MyExell {
     public static Workbook libroDeTrabajo;
     public static WritableWorkbook copiaDeLibro;
-    
+    public static WritableSheet hojaTikets;
     
     public static void open(String path){
     
@@ -148,10 +148,32 @@ public abstract class MyExell {
         private void insertSheet(ArrayList<Tickets> lista , int numeroHoja){
         try {
 
-                   
                 
-                WritableSheet hojaTikets = copiaDeLibro.getSheet(numeroHoja);
+            
+                
+            //=======================================Verificar si la hoja existe    
+                if(copiaDeLibro.getSheet(numeroHoja)!= null){
+                    hojaTikets = copiaDeLibro.getSheet(numeroHoja);
+                }
+                    
+                else{
+                    if(numeroHoja == 0){
+                        hojaTikets = copiaDeLibro.createSheet("Tickets Pendientes", numeroHoja);
+                    }
+                    if(numeroHoja == 1){
+                        hojaTikets = copiaDeLibro.createSheet("Tickets Verdes", numeroHoja);
+                    }
+                    if(numeroHoja == 2){
+                        hojaTikets = copiaDeLibro.createSheet("Tickets Amarillo", numeroHoja);
+                    }
+                    if(numeroHoja == 3){
+                        hojaTikets = copiaDeLibro.createSheet("Tickets Rojos", numeroHoja);
+                    }
 
+                }
+            //=======================================    
+                
+                
                 try{
                     for(int i =0; i+1<lista.size(); i++){
 

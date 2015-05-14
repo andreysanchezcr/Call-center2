@@ -352,7 +352,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
        
         
         MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo);
-        MyExell.save_All_Changes(pathArchivo, MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo));
+        //MyExell.save_All_Changes(pathArchivo, MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo));
 
         Lista.repaint();
         

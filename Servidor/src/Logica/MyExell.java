@@ -114,7 +114,7 @@ public abstract class MyExell {
     
     
     
-        public void cargarGuardarCambiosEnArchivo(String path, ArrayList<Tickets> listaPendientes,
+        public static void save_All_Changes(String path, ArrayList<Tickets> listaPendientes,
                                                 ArrayList<Tickets> listaVerdes,
                                                 ArrayList<Tickets> listaAmarillos,
                                                 ArrayList<Tickets> listaRojos) {
@@ -122,7 +122,7 @@ public abstract class MyExell {
 
             //Fecha y Hora para el Nombre del Archivo Final
             Date fechaHoraActualParaFile = new Date();
-            String strFechaHoraParaFile = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa").format(fechaHoraActualParaFile);    
+            String strFechaHoraParaFile = new SimpleDateFormat("/dd-MM-yyyy hh:mm aaa").format(fechaHoraActualParaFile);    
 
 
             //Abrir archivo .xls para clonarlo
@@ -145,7 +145,7 @@ public abstract class MyExell {
         }
 
 
-        private void insertSheet(ArrayList<Tickets> lista , int numeroHoja){
+        private static void insertSheet(ArrayList<Tickets> lista , int numeroHoja){
         try {
 
                 
@@ -224,7 +224,7 @@ public abstract class MyExell {
          * @param direccion del archivo original que sera clonado
          * @return path del archivo
          */
-        public String cortar(String direccion){
+        public static String cortar(String direccion){
 
             String cutString="";
             int indice=0;

@@ -265,7 +265,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                                     .addGap(218, 218, 218)
                                     .addComponent(btnCargarTickets1))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -352,7 +352,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
        
         
         MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo);
-
+        MyExell.save_All_Changes(pathArchivo, MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo),MyExell.Open_Load_And_ReturnListOfTickets(pathArchivo));
 
         Lista.repaint();
         

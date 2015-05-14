@@ -152,10 +152,10 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +242,6 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 13)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setOpaque(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,7 +258,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCargarTickets)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(218, 218, 218)
@@ -271,8 +270,9 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(84, 84, 84)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(9, 9, 9))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,23 +343,21 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
     private void btnCargarTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarTicketsActionPerformed
         JFileChooser ventanaSeleccionArchivo = new JFileChooser();
         ventanaSeleccionArchivo.showOpenDialog(null);
-        File archivoActual= ventanaSeleccionArchivo.getSelectedFile();
+        File archivoActual = ventanaSeleccionArchivo.getSelectedFile();
         String pathArchivo = archivoActual.getAbsolutePath();
         lblPathArchivoActual.setText(pathArchivo);
         
-        Exell myExell= new Exell(pathArchivo);
+        Exell myExell= new Exell(pathArchivo);      
         
-        
-        System.out.println(myExell.cortar("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls")); 
-        
+        System.out.println(myExell.cortar("/root/NetBeansProjects/CallCenter/Call-center2/Libro1.xls"));
         myExell.cargarTiketsDeArchivo();
         myExell.cargarTiketsVerdesDeArchivo();
         String result = "";
         ArrayList <Tickets> ArrayListTicket =  myExell.cargarTiketsDeArchivo();//Array de los tickets        
         for (Tickets ticket: ArrayListTicket) {
-            result = "ID ";
+            result = "ID " ;
             result += Integer.toString(ticket.getIDTicket());
-            result += "Asunto ";
+            result += " Asunto ";
             result += (ticket.getAsunto());           
             Lista.add(result);
             result = "";

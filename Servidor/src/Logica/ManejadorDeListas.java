@@ -18,7 +18,11 @@ public abstract class ManejadorDeListas {
     public static ArrayList<Tickets> ListaDePendientes = new ArrayList();
     
     
-    
+    public static void addNewTiketsToLocalListPendientes(ArrayList<Tickets> ListaDePendientesInsert){
+        for (int i = 0; i < ListaDePendientesInsert.size();i++){
+            ListaDePendientes.add(ListaDePendientesInsert.get(i));
+        }
+    }
     
     public static ArrayList<Tickets> getListaDePendientes() {
         return ListaDePendientes;

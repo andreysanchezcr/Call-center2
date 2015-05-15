@@ -359,6 +359,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
             result += Integer.toString(ticket.getIDTicket());
             result += " Asunto ";
             result += (ticket.getAsunto());           
+            //
             Lista.add(result);
             result = "";
         }
@@ -368,6 +369,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        jTextArea1.setText("");
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista4.add(pTiket);
@@ -378,6 +380,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        jTextArea1.setText("");
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista6.add(pTiket);
@@ -388,6 +391,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        jTextArea1.setText("");
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista5.add(pTiket);
@@ -400,6 +404,11 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jButton2.setEnabled(true);
         jButton3.setEnabled(true);
         jButton4.setEnabled(true);
+        jTextArea1.setText("          **Infomación del Tiket**");
+        /*
+        String pID = getIDTiket(Lista.getSelectedItem().toString());
+        muestraInfoTiket(pID);
+        */
     }//GEN-LAST:event_ListaItemStateChanged
 
     private void ListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaActionPerformed

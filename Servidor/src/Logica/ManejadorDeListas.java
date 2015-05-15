@@ -66,7 +66,8 @@ public abstract class ManejadorDeListas {
                     //Si encuentra el objeto con el mismo ID
                     if(Integer.toString(ListaDePendientes.get(i).getIDTicket()).equals(MyID)){
                         ListaDestino.add(ListaDePendientes.get(i));
-                        
+                        ListaDePendientes.remove(i);
+                
                         System.out.println("Se encontro el objeto ya fue agregado");
                         break;
                     }

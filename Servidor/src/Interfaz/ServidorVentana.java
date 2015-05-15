@@ -344,7 +344,7 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         ventanaSeleccionArchivo.showOpenDialog(null);
         File archivoActual= ventanaSeleccionArchivo.getSelectedFile();
         String pathArchivo = archivoActual.getAbsolutePath();
-        lblPathArchivoActual.setText(pathArchivo);
+        
         //====================================================//
         
        

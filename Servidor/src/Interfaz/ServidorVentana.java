@@ -404,11 +404,13 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jButton2.setEnabled(true);
         jButton3.setEnabled(true);
         jButton4.setEnabled(true);
-        jTextArea1.setText("          **Infomación del Tiket**");
+        jTextArea1.setText("             **INFORMACIÓN DEL TIKET**");
         /*
         String pID = getIDTiket(Lista.getSelectedItem().toString());
-        muestraInfoTiket(pID);
+        String pInfo = cargaInfoTiket(pID);
+        jTextArea1.append(pInfo);
         */
+        jTextArea1.append("\n____________________________________________");
     }//GEN-LAST:event_ListaItemStateChanged
 
     private void ListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaActionPerformed

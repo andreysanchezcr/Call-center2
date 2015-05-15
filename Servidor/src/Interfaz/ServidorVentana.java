@@ -2,6 +2,9 @@ package Interfaz;
 import javax.swing.*;
 import java.io.File;
 import Logica.*;//<---------------------------------------------------------------------Despues le borro
+import static Logica.ManejadorDeListas.ListaDeAmarillos;
+import static Logica.ManejadorDeListas.ListaDeRojos;
+import static Logica.ManejadorDeListas.ListaDeVerdes;
 import Logica.servidor.Servidor;
 import java.util.ArrayList;
 /*
@@ -68,9 +71,9 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jLabel5 = new javax.swing.JLabel();
         btnCargarTickets = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSetComoVERDE = new javax.swing.JButton();
+        btnSetComoAmarillo = new javax.swing.JButton();
+        btnSetComoRojo = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -107,33 +110,33 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("Servidor para categorizar los tickets");
 
-        jButton2.setBackground(new java.awt.Color(51, 204, 0));
-        jButton2.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        jButton2.setText("VERDE");
-        jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSetComoVERDE.setBackground(new java.awt.Color(51, 204, 0));
+        btnSetComoVERDE.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        btnSetComoVERDE.setText("VERDE");
+        btnSetComoVERDE.setEnabled(false);
+        btnSetComoVERDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSetComoVERDEActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 0));
-        jButton3.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        jButton3.setText("AMARILLO");
-        jButton3.setEnabled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSetComoAmarillo.setBackground(new java.awt.Color(255, 255, 0));
+        btnSetComoAmarillo.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        btnSetComoAmarillo.setText("AMARILLO");
+        btnSetComoAmarillo.setEnabled(false);
+        btnSetComoAmarillo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSetComoAmarilloActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        jButton4.setText("ROJO");
-        jButton4.setEnabled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSetComoRojo.setBackground(new java.awt.Color(255, 0, 0));
+        btnSetComoRojo.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        btnSetComoRojo.setText("ROJO");
+        btnSetComoRojo.setEnabled(false);
+        btnSetComoRojo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSetComoRojoActionPerformed(evt);
             }
         });
 
@@ -259,30 +262,32 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCargarTickets)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(218, 218, 218)
-                                    .addComponent(btnCargarTickets1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(84, 84, 84)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(218, 218, 218)
+                                .addComponent(btnCargarTickets1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Lista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnSetComoAmarillo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSetComoVERDE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSetComoRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(84, 84, 84)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lista4, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Lista6, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(Lista5, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lista4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lista6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(Lista5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel7)
@@ -307,11 +312,11 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(btnSetComoVERDE)
                                 .addGap(19, 19, 19)
-                                .addComponent(jButton3)
+                                .addComponent(btnSetComoAmarillo)
                                 .addGap(21, 21, 21)
-                                .addComponent(jButton4)))))
+                                .addComponent(btnSetComoRojo)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCargarTickets)
                 .addGap(18, 18, 18)
@@ -358,40 +363,47 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
         
     }//GEN-LAST:event_btnCargarTicketsActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSetComoVERDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetComoVERDEActionPerformed
         // TODO add your handling code here:
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista4.add(pTiket);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        btnSetComoVERDE.setEnabled(false);
+        btnSetComoAmarillo.setEnabled(false);
+        btnSetComoRojo.setEnabled(false);
+        
+        ManejadorDeListas.finderThenInsert(pTiket, ListaDeVerdes);
+        
+    }//GEN-LAST:event_btnSetComoVERDEActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSetComoAmarilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetComoAmarilloActionPerformed
         // TODO add your handling code here:
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista6.add(pTiket);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        btnSetComoVERDE.setEnabled(false);
+        btnSetComoAmarillo.setEnabled(false);
+        btnSetComoRojo.setEnabled(false);
+        
+        ManejadorDeListas.finderThenInsert(pTiket, ListaDeAmarillos);
+    }//GEN-LAST:event_btnSetComoAmarilloActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSetComoRojoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetComoRojoActionPerformed
         // TODO add your handling code here:
         String pTiket = Lista.getSelectedItem();
         Lista.remove(pTiket);
         Lista5.add(pTiket);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        btnSetComoVERDE.setEnabled(false);
+        btnSetComoAmarillo.setEnabled(false);
+        btnSetComoRojo.setEnabled(false);
+        
+        ManejadorDeListas.finderThenInsert(pTiket, ListaDeRojos);
+    }//GEN-LAST:event_btnSetComoRojoActionPerformed
 
     private void ListaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListaItemStateChanged
-        jButton2.setEnabled(true);
-        jButton3.setEnabled(true);
-        jButton4.setEnabled(true);
+        btnSetComoVERDE.setEnabled(true);
+        btnSetComoAmarillo.setEnabled(true);
+        btnSetComoRojo.setEnabled(true);
     }//GEN-LAST:event_ListaItemStateChanged
 
     private void ListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaActionPerformed
@@ -438,9 +450,9 @@ public class ServidorVentana extends javax.swing.JFrame implements Runnable {
     public static java.awt.List Lista6;
     private javax.swing.JButton btnCargarTickets;
     private javax.swing.JButton btnCargarTickets1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnSetComoAmarillo;
+    private javax.swing.JButton btnSetComoRojo;
+    private javax.swing.JButton btnSetComoVERDE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

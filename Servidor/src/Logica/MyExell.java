@@ -140,7 +140,7 @@ public abstract class MyExell {
 
             try {
 
-                copiaDeLibro =  Workbook.createWorkbook(new File (cortar(path)+strFechaHoraParaFile+".xls"),libroDeTrabajo);
+                copiaDeLibro =  Workbook.createWorkbook(new File (" TICKETS_"+cortar(path)+strFechaHoraParaFile+".xls"),libroDeTrabajo);
 
                 insertSheet(listaPendientes,0);
                 insertSheet(listaVerdes,1);

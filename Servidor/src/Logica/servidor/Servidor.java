@@ -1,7 +1,7 @@
 package Logica.servidor;
 
 import Interfaz.ServidorVentana;
-import Logica.Exell;
+import Logica.MyExell;
 import Logica.Persona;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
